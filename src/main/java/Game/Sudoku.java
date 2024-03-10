@@ -18,11 +18,11 @@ public class Sudoku {
 
 
     public Sudoku(){
-        this.sudokuBoard = generateSudoku(new Random().nextInt(EASY,HARD+1));
+        generateSudoku(new Random().nextInt(EASY,HARD+1));
     }
     public Sudoku(int difficulty){
         if(difficulty>=EASY && difficulty<=HARD){
-            this.sudokuBoard = generateSudoku(difficulty);
+            generateSudoku(difficulty);
         }else throw new IllegalArgumentException();
 
     }
@@ -40,13 +40,12 @@ public class Sudoku {
         this.isBoardValid = SudokuValidator.isSudokuValid(board);
     }
 
-    public char[][] generateSudoku(int difficulty){
+    public void generateSudoku(int difficulty){
 
         SudokuGenerator generator = new SudokuGenerator();
         generator.createPuzzle(difficulty);
+        sudokuBoard = generator.getSudokuBoard();
 
-
-        return null;
     }
 
 

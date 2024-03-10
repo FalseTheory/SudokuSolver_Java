@@ -16,7 +16,7 @@ public class SudokuGenerator {
                 {'1', '2', '3', '4', '5', '6', '7', '8', '9'},
                 {'4', '5', '6', '7', '8', '9', '1', '2', '3'},
                 {'7', '8', '9', '1', '2', '3', '4', '5', '6'},
-                {'2', '3', '6', '7', '8', '9', '1', '2', '3'},
+                {'2', '3', '4', '5', '6', '7', '8', '9', '1'},
                 {'5', '6', '7', '8', '9', '1', '2', '3', '4'},
                 {'8', '9', '1', '2', '3', '4', '5', '6', '7'},
                 {'3', '4', '5', '6', '7', '8', '9', '1', '2'},
@@ -32,7 +32,7 @@ public class SudokuGenerator {
     }
 
 
-    private void generateRandomLayout(){
+    public void generateRandomLayout(){
         int operation = new Random().nextInt(0,5);
         switch(operation){
             case(TRANSPOSE):
@@ -121,6 +121,10 @@ public class SudokuGenerator {
             cellsToFill = new Random().nextInt(28,31);
         }else{
             cellsToFill = new Random().nextInt(32,38);
+        }
+        for(int i = 0; i < 81 - cellsToFill; i++){
+            int randomCell = new Random().nextInt(0,81);
+            sudokuBoard[randomCell/9][randomCell%9] = '.';
         }
     }
 

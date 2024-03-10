@@ -16,10 +16,11 @@ public class Main {
                 {'.','.','.','4','1','9','.','.','5'},
                 {'.','.','.','.','8','.','.','7','9'}
         };
-        Sudoku sudoku = new Sudoku(board);
-        SudokuGenerator generator = new SudokuGenerator();
-        sudoku.setBoard(generator.getSudokuBoard());
+        Sudoku sudoku = new Sudoku(1);
         sudoku.printBoard();
+        sudoku.generateSolution();
+        sudoku.printBoard();
+        System.out.println(SudokuValidator.isSudokuValid(sudoku.getBoard()));
 
 
     }
