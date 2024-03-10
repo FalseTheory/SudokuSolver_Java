@@ -16,7 +16,7 @@ public class Main {
                 {'.','.','.','4','1','9','.','.','5'},
                 {'.','.','.','.','8','.','.','7','9'}
         };
-        Sudoku sudoku = new Sudoku(1);
+        Sudoku sudoku = new Sudoku(3);
         sudoku.printBoard();
         sudoku.generateSolution();
         sudoku.printBoard();

@@ -1,7 +1,10 @@
 package Game;
 
 import java.util.Random;
+import java.util.stream.IntStream;
 
+//TODO
+//1. Придумать более эффективный метод удаления клеток при генерации
 public class SudokuGenerator {
 
     private final int TRANSPOSE = 0;
@@ -123,7 +126,12 @@ public class SudokuGenerator {
             cellsToFill = new Random().nextInt(32,38);
         }
         for(int i = 0; i < 81 - cellsToFill; i++){
+
             int randomCell = new Random().nextInt(0,81);
+            if(sudokuBoard[randomCell/9][randomCell%9]=='.'){
+                i--;
+                continue;
+            }
             sudokuBoard[randomCell/9][randomCell%9] = '.';
         }
     }
