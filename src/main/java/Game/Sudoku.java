@@ -42,8 +42,8 @@ public class Sudoku {
 
     public void generateSudoku(int difficulty){
 
-        SudokuGenerator generator = new SudokuGenerator();
-        generator.createPuzzle(difficulty);
+        SudokuGenerator generator = new SudokuGenerator(difficulty);
+
         sudokuBoard = generator.getSudokuBoard();
 
     }

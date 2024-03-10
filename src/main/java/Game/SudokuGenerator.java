@@ -14,28 +14,17 @@ public class SudokuGenerator {
     private final int SWAP_COL_REGION = 4;
     private char[][] sudokuBoard;
 
+    public SudokuGenerator(int difficulty){
+        generateNewBoard(difficulty);
+
+    }
     public SudokuGenerator(){
-        this.sudokuBoard = new char[][]{
-                {'1', '2', '3', '4', '5', '6', '7', '8', '9'},
-                {'4', '5', '6', '7', '8', '9', '1', '2', '3'},
-                {'7', '8', '9', '1', '2', '3', '4', '5', '6'},
-                {'2', '3', '4', '5', '6', '7', '8', '9', '1'},
-                {'5', '6', '7', '8', '9', '1', '2', '3', '4'},
-                {'8', '9', '1', '2', '3', '4', '5', '6', '7'},
-                {'3', '4', '5', '6', '7', '8', '9', '1', '2'},
-                {'6', '7', '8', '9', '1', '2', '3', '4', '5'},
-                {'9', '1', '2', '3', '4', '5', '6', '7', '8'}
-        };
-        int seed = new Random().nextInt(0,100);
-        for(int i = 0; i<seed;i++){
-            generateRandomLayout();
-        }
-
-
+        generateNewBoard();
     }
 
 
-    public void generateRandomLayout(){
+
+    private void generateRandomLayout(){
         int operation = new Random().nextInt(0,5);
         switch(operation){
             case(TRANSPOSE):
@@ -116,7 +105,7 @@ public class SudokuGenerator {
     public char[][] getSudokuBoard(){
         return sudokuBoard;
     }
-    public void createPuzzle(int difficulty){
+    private void createPuzzle(int difficulty){
         int cellsToFill;
         if (difficulty==3){
             cellsToFill = new Random().nextInt(17,27);
@@ -134,6 +123,29 @@ public class SudokuGenerator {
             }
             sudokuBoard[randomCell/9][randomCell%9] = '.';
         }
+    }
+    public void generateNewBoard(int difficulty){
+        this.sudokuBoard = new char[][]{
+                {'1', '2', '3', '4', '5', '6', '7', '8', '9'},
+                {'4', '5', '6', '7', '8', '9', '1', '2', '3'},
+                {'7', '8', '9', '1', '2', '3', '4', '5', '6'},
+                {'2', '3', '4', '5', '6', '7', '8', '9', '1'},
+                {'5', '6', '7', '8', '9', '1', '2', '3', '4'},
+                {'8', '9', '1', '2', '3', '4', '5', '6', '7'},
+                {'3', '4', '5', '6', '7', '8', '9', '1', '2'},
+                {'6', '7', '8', '9', '1', '2', '3', '4', '5'},
+                {'9', '1', '2', '3', '4', '5', '6', '7', '8'}
+        };
+        int seed = new Random().nextInt(0,100);
+        for(int i = 0; i<seed;i++){
+            generateRandomLayout();
+        }
+        createPuzzle(difficulty);
+    }
+    public void generateNewBoard(){
+        int difficulty = new Random().nextInt(1,4);
+        generateNewBoard(difficulty);
+
     }
 
 
