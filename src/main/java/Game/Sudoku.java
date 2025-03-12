@@ -1,6 +1,11 @@
 package Game;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Sudoku {
     /**
@@ -26,6 +31,21 @@ public class Sudoku {
             generateSudoku(difficulty);
         } else throw new IllegalArgumentException();
 
+    }
+
+    public Sudoku(String path) throws FileNotFoundException {
+        Scanner sc = new Scanner(new BufferedReader(new FileReader(path)));
+        char[][] board = new char[9][9];
+        while(sc.hasNextLine()) {
+            for(int i = 0;i<board.length;i++) {
+                String[] line = sc.nextLine().trim().split("");
+                for(int j = 0; j<line.length;j++) {
+                    board[i][j] = line[j].charAt(0);
+                }
+            }
+        }
+        this.sudokuBoard = board;
+        this.isBoardValid = SudokuValidator.isSudokuValid(board);
     }
 
     public Sudoku(char[][] board) {
