@@ -1,34 +1,29 @@
 
 # Sudoku Game (java)
 ___
-Simple **sudoku** game created in java.  
+Простой решатель **судоку** на java.  
 
 ## Features
 
-1. Creating a new board  
-2. Validating an existing board
-3. Solving a board with backtracking algorithm
-4. All the above with user provided sudoku board
+1. Создание новой доски  
+2. Проверка (валидация) доски на решимость
+3. Решение доски алгоритмом бектрекинга
 
-## Example
+## Пример
 ___
-### User board solving
-```java
-import Game.Sudoku;
-import Game.SudokuSolver;
-
-Sudoku sudoku = new Sudoku(userBoard);
-SudokuSolver.bactrackingSolution(sudoku.getBoard(), 0, 0);
-sudoku.printBoard();
-
+### Решение пользовательской доски
+Доску размерностью 9x9 внести в файл input.txt в следующем формате, где пропуски - символ '.'
 ```
-### Creating a new board
-
-```java
-import Game.Sudoku;
-
-Sudoku sudoku = new Sudoku();
-
+...95...3
+..784...5
+..5371.2.
+6.37..4.9
+...6.3.7.
+.714.8..6
+852.34.97
+.9.5.734.
+7...6....
 ```
+
 
 
